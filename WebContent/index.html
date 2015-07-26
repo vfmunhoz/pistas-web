@@ -7,60 +7,13 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
-<title>Insert title here</title>
+<title>AeroNews</title>
 </head>
-<body ng-controller="LoginController as login">
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">Project name</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">Pistas</a></li>
-					<li><a href="#contact">Parceiros</a></li>
-				</ul>
-				<div ng-hide="login.user.authenticated">
-					<form class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="email" placeholder="E-mail" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="password" placeholder="Senha" class="form-control">
-						</div>
-						<button type="submit" class="btn btn-success">Entrar</button>
-					</form>
-				</div>
-				<div class="navbar-right" ng-show="login.user.authenticated">
-						<ul class="nav navbar-nav">
-							<li>
-								<a 	href="#" class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="true" style="font-weight: bold">
-									{{login.user.name}}
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="dropdown-user">
-								    <li><a href="#">Action</a></li>
-								    <li><a href="#">Another action</a></li>
-								    <li><a href="#">Something else here</a></li>
-								    <li><a href="#">Separated link</a></li>
-								  </ul>
-							</li>
-						</ul>
-				</div>
-			</div>
-		</div>
-	</nav>
+<body>
+	<div ng-include="'templates/top-template.html'"></div>
 
 	<div class="container">
-		<div class="jumbotron" ng-hide="login.user.authenticated">
+		<div class="jumbotron">
 			<h1>Bem Vindo!</h1>
 			<ul>
 				<li><b>Você conhece lugares para voar perto de você?</b></li>

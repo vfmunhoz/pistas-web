@@ -1,18 +1,16 @@
 (function() {
 	var app = angular.module('main', []);
 
-	app.controller('LoginController', ['$scope', function($scope) {
-		$scope.authenticate = function(userToAuthenticate) {
-			userToAuthenticate.authenticated = true;
-			userToAuthenticate.name = 'Teste';
-			
-			$scope.user = userToAuthenticate;
+	app.controller('LoginController', function() {
+		this.user = {authenticated: false};
+		
+		this.authenticate = function() {
+			this.user.authenticated = true;
+			this.user.name = 'Teste';
 		};
 		
-		$scope.logout = function() {
-			$scope.user = {authenticated: false};
+		this.logout = function() {
+			this.user = {authenticated: false};
 		};
-
-		$scope.logout();
-	}]);
+	});
 })();

@@ -1,5 +1,4 @@
-
-<div ng-controller="LoginController as login" ng-model="template">
+<div ng-controller="LoginController as loginCtrl" ng-model="template">
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
@@ -18,27 +17,27 @@
 					<li><a href="#about">Pistas</a></li>
 					<li><a href="#contact">Parceiros</a></li>
 				</ul>
-				<div ng-hide="user.authenticated">
-					<form class="navbar-form navbar-right" novalidate>
+				<div ng-hide="loginCtrl.user.authenticated">
+					<form class="navbar-form navbar-right" name="loginForm" ng-submit="loginForm.$valid && loginCtrl.authenticate()" novalidate>
 						<div class="form-group">
-							<input ng-model="user.email" type="email" placeholder="E-mail" class="form-control">
+							<input ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<input ng-model="user.password" type="password" placeholder="Senha" class="form-control">
+							<input ng-model="loginCtrl.user.password" type="password" placeholder="Senha" class="form-control" required>
 						</div>
-						<button ng-click="authenticate(user)" type="submit" class="btn btn-success">Entrar</button>
+						<button type="submit" class="btn btn-success">Entrar</button>
 					</form>
 				</div>
-				<div class="navbar-right" ng-show="user.authenticated">
+				<div class="navbar-right" ng-show="loginCtrl.user.authenticated">
 						<ul class="nav navbar-nav">
 							<li>
 								<a 	href="#" class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="true" style="font-weight: bold">
-									{{user.name}}
+									{{loginCtrl.user.name}}
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="dropdown-user">
 								    <li><a href="#">Meu Perfil</a></li>
-								    <li><a href="#" ng-click="logout()">Sair</a></li>
+								    <li><a href="#" ng-click="loginCtrl.logout()">Sair</a></li>
 								  </ul>
 							</li>
 						</ul>

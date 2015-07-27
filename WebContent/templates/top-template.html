@@ -26,6 +26,8 @@
 							<input ng-model="loginCtrl.user.password" type="password" placeholder="Senha" class="form-control" required>
 						</div>
 						<button type="submit" class="btn btn-success">Entrar</button>
+						<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.required">please enter your email</p>
+    					<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.email">please enter a valid email</p>
 					</form>
 				</div>
 				<div class="navbar-right" ng-show="loginCtrl.user.authenticated">

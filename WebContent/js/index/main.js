@@ -1,6 +1,18 @@
 (function() {
-	var app = angular.module('main', []);
+	var app = angular.module('main', ['ngRoute']);
 
+	app.controller('HomeController', function($scope) {
+		$scope.message = 'Home!';
+	});
+	
+	app.controller('PistasController', function($scope) {
+		$scope.message = 'Pistas!';
+	});
+
+	app.controller('MainController', function($scope) {
+		$scope.message = 'Main!';
+	});
+	
 	app.controller('LoginController', function() {
 		this.user = {authenticated: false};
 		
@@ -12,5 +24,22 @@
 		this.logout = function() {
 			this.user = {authenticated: false};
 		};
+	});
+
+	app.config(function($routeProvider, $locationProvider) {
+		$routeProvider.when('/', {
+			templateUrl : 'pages/home.html',
+			controller : 'HomeController'
+		});
+		
+		$routeProvider.when('/home', {
+			templateUrl : 'pages/home.html',
+			controller : 'HomeController'
+		});
+		
+		$routeProvider.when('/pistas', {
+			templateUrl : 'pages/pistas.html',
+			controller : 'PistasController'
+		});
 	});
 })();

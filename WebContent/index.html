@@ -9,60 +9,66 @@
 
 <title>AeroNews</title>
 </head>
-<body>
-	<div ng-include="'templates/top-template.html'"></div>
+<body ng-controller="MainController">
+	<div ng-controller="LoginController as loginCtrl" ng-model="template">
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">AeroNews</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#home">Home</a></li>
+						<li><a href="#pistas">Pistas</a></li>
+						<li><a href="#contact">Parceiros</a></li>
+					</ul>
+					<div ng-hide="loginCtrl.user.authenticated">
+						<form class="navbar-form navbar-right" name="loginForm" ng-submit="loginForm.$valid && loginCtrl.authenticate()" novalidate>
+							<div class="form-group">
+								<input ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<input ng-model="loginCtrl.user.password" type="password" placeholder="Senha" class="form-control" required>
+							</div>
+							<button type="submit" class="btn btn-success">Entrar</button>
+							<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.required">please enter your email</p>
+	    					<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.email">please enter a valid email</p>
+						</form>
+					</div>
+					<div class="navbar-right" ng-show="loginCtrl.user.authenticated">
+							<ul class="nav navbar-nav">
+								<li>
+									<a 	href="#" class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="true" style="font-weight: bold">
+										{{loginCtrl.user.name}}
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="dropdown-user">
+									    <li><a href="#">Meu Perfil</a></li>
+									    <li><a href="#" ng-click="loginCtrl.logout()">Sair</a></li>
+									  </ul>
+								</li>
+							</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
 
 	<div class="container">
-		<div class="jumbotron">
-			<h1>Bem Vindo!</h1>
-			<ul>
-				<li><b>Você conhece lugares para voar perto de você?</b></li>
-				<li><b>Você sabe de algum evento de aeromodelismo?</b></li>
-				<li><b>Você quer marcar com seus amigos uma data para voarem juntos?</b></li>
-			</ul>
-			<p>Descubra lugares para voar, tire suas dúvidas sobre aeromodelismo e interaja com seus amigos!</p>
-			<p>
-				<a href="#" class="btn btn-primary btn-lg" role="button">Saiba mais!</a>
-				<a href="#" class="btn btn-primary btn-lg btn-success" role="button">Cadastre-se</a>
-			</p>
-		</div>
-		<div class="row">
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="images/index/maps.png" alt="...">
-		      <div class="caption">
-		        <h4>Encontre a pista mais próxima!</h4>
-		        <p>Todos já passamos por dias onde não tinhamos idéia de onde voar, encontre aqui locais para a prática do hobby.</p>
-		        <p><a href="#" class="btn btn-primary" role="button">Encontre Pistas!</a>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="images/index/warehouse.png" alt="...">
-		      <div class="caption">
-		        <h4>Querendo um novo aeromodelo?</h4>
-		        <p>Nossos parceiros são as melhores lojas, para que você compre seu aeromodelo com segurança e rapidez.</p>
-		        <p><a href="#" class="btn btn-primary" role="button">Busque seus produtos!</a>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-6 col-md-4">
-		    <div class="thumbnail">
-		      <img src="images/index/books.png" alt="...">
-		      <div class="caption">
-		        <h4>Está começando no aeromodelismo?</h4>
-		        <p>Disponibilizamos uma série de links e matérias organizadas para quem está iniciando no aeromodelismo.</p>
-		        <p><a href="#" class="btn btn-primary" role="button">Aprenda já!</a>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+		<div ng-view></div>
 	</div>
 
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
 	<script type="text/javascript" src="js/index/main.js"></script>
 </body>
 </html>

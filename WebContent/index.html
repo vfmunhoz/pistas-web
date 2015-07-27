@@ -21,26 +21,26 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">AeroNews</a>
+					<a class="navbar-brand" href="#home">AeroNews</a>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
+				<div id="navbar" class="navbar-collapse collapse" ng-controller="NavbarController">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#home">Home</a></li>
-						<li><a href="#pistas">Pistas</a></li>
-						<li><a href="#contact">Parceiros</a></li>
+						<li ng-class="{ active: isActive('/') || active: isActive('/home')}"><a href="#home">Home</a></li>
+						<li><a ng-class="{ active: isActive('/pistas')}" href="#pistas">Pistas</a></li>
+						<li><a ng-class="{ active: isActive('/parceiros')}" href="#parceiros">Parceiros</a></li>
 					</ul>
 					<div ng-hide="loginCtrl.user.authenticated">
 						<form class="navbar-form navbar-right" name="loginForm" ng-submit="loginForm.$valid && loginCtrl.authenticate()" novalidate>
 							<div class="form-group">
-								<input ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
+								<input id="email" name="email" ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
 							</div>
 							<div class="form-group">
-								<input ng-model="loginCtrl.user.password" type="password" placeholder="Senha" class="form-control" required>
+								<input id="password" name="password" ng-model="loginCtrl.user.password" type="password" placeholder="Senha" class="form-control" required>
 							</div>
 							<button type="submit" class="btn btn-success">Entrar</button>
-							<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.required">please enter your email</p>
-	    					<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.email">please enter a valid email</p>
 						</form>
+						<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.required">please enter your email</p>
+						<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.email">please enter a valid email</p>
 					</div>
 					<div class="navbar-right" ng-show="loginCtrl.user.authenticated">
 							<ul class="nav navbar-nav">

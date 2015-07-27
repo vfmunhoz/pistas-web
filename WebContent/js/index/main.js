@@ -26,6 +26,12 @@
 		};
 	});
 
+	app.controller('NavbarController', function($scope, $location) {
+		$scope.isActive = function (viewLocation) { 
+	        return viewLocation === $location.path();
+	    };
+	});
+	
 	app.config(function($routeProvider, $locationProvider) {
 		$routeProvider.when('/', {
 			templateUrl : 'pages/home.html',

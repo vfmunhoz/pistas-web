@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
 
 <title>AeroNews</title>
 </head>
@@ -30,6 +31,7 @@
 						<li><a ng-class="{ active: isActive('/parceiros')}" href="#parceiros">Parceiros</a></li>
 					</ul>
 					<div ng-hide="loginCtrl.user.authenticated">
+						<span class="label label-danger" ng-show="loginForm.$submitted && loginForm.email.$error.required">E-mail inválido</span>
 						<form class="navbar-form navbar-right" name="loginForm" ng-submit="loginForm.$valid && loginCtrl.authenticate()" novalidate>
 							<div class="form-group">
 								<input id="email" name="email" ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
@@ -39,19 +41,17 @@
 							</div>
 							<button type="submit" class="btn btn-success">Entrar</button>
 						</form>
-						<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.required">please enter your email</p>
-						<p class="col-sm-offset-3 help-block error" ng-show="loginForm.$submitted && loginForm.email.$error.email">please enter a valid email</p>
 					</div>
 					<div class="navbar-right" ng-show="loginCtrl.user.authenticated">
 							<ul class="nav navbar-nav">
 								<li>
-									<a 	href="#" class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
+									<a 	class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="true" style="font-weight: bold">
 										{{loginCtrl.user.name}}
 									</a>
 									<ul class="dropdown-menu" aria-labelledby="dropdown-user">
-									    <li><a href="#">Meu Perfil</a></li>
-									    <li><a href="#" ng-click="loginCtrl.logout()">Sair</a></li>
+									    <li><a>Meu Perfil</a></li>
+									    <li><a ng-click="loginCtrl.logout()">Sair</a></li>
 									  </ul>
 								</li>
 							</ul>

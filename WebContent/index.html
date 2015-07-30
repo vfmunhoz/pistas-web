@@ -62,7 +62,7 @@
 
 	<div class="container">
 		<div>
-			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.closeAlert($index)">{{alert.msg}}</alert>
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.closeAlert($index)" dismiss-on-timeout="10000">{{alert.msg}}</alert>
 		</div>
 		<div ng-view></div>
 	</div>

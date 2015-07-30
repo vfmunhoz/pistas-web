@@ -23,10 +23,8 @@
 			loginForm.$setPristine();
 			loginForm.$setUntouched();
 			
-			alertService.add('success', 'Teste');
-			alertService.add('success', 'Teste1');
-			alertService.add('error', 'Teste2');
-			alertService.add('error', 'Teste3');
+			alertService.add('error', 'teste');
+			alertService.add('success', 'teste');
 		};
 		
 		

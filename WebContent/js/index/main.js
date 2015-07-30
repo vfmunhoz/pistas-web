@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('main', ['ngRoute', 'ui.bootstrap']);
+	var app = angular.module('main', ['ngRoute', 'ui.bootstrap', 'main.services']);
 
 	app.controller('HomeController', function($scope) {
 		$scope.message = 'Home!';
@@ -13,7 +13,7 @@
 		$scope.message = 'Main!';
 	});
 	
-	app.controller('LoginController', function($scope) {
+	app.controller('LoginController', function($scope, alertService) {
 		$scope.user = {authenticated: false};
 		
 		$scope.authenticate = function(loginForm) {
@@ -22,6 +22,11 @@
 			
 			loginForm.$setPristine();
 			loginForm.$setUntouched();
+			
+			alertService.add('success', 'Teste');
+			alertService.add('success', 'Teste1');
+			alertService.add('error', 'Teste2');
+			alertService.add('error', 'Teste3');
 		};
 		
 		
@@ -35,21 +40,6 @@
 		$scope.isActive = function (viewLocation) { 
 	        return viewLocation === $location.path();
 	    };
-	});
-
-	app.controller('AlertDemoCtrl', function($scope) {
-		$scope.alerts = [
-		                 { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-		                 { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-		               ];
-		
-		$scope.addAlert = function() {
-			$scope.alerts.push({type: 'danger', msg: 'Another alert!'});
-		};
-		
-		$scope.closeAlert = function(index) {
-			$scope.alerts.splice(index, 1);
-		};
 	});
 
 	app.config(function($routeProvider, $locationProvider) {

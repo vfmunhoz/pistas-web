@@ -61,9 +61,8 @@
 	</div>
 
 	<div class="container">
-		<div ng-controller="AlertDemoCtrl">
-			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-			<button class='btn btn-default' ng-click="addAlert('Teste')">Add Alert</button>
+		<div>
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.closeAlert($index)">{{alert.msg}}</alert>
 		</div>
 		<div ng-view></div>
 	</div>
@@ -73,6 +72,7 @@
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/angular-route.min.js"></script>
 	<script type="text/javascript" src="js/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/index/services.js"></script>
 	<script type="text/javascript" src="js/index/main.js"></script>
 </body>
 </html>

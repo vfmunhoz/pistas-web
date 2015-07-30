@@ -26,15 +26,14 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse" ng-controller="NavbarController">
 					<ul class="nav navbar-nav">
-						<li ng-class="{ active: isActive('/') || active: isActive('/home')}"><a href="#home">Home</a></li>
+						<li ng-class="{ active: isActive('/home')}"><a href="#home">Home</a></li>
 						<li><a ng-class="{ active: isActive('/pistas')}" href="#pistas">Pistas</a></li>
 						<li><a ng-class="{ active: isActive('/parceiros')}" href="#parceiros">Parceiros</a></li>
 					</ul>
-					<div ng-hide="loginCtrl.user.authenticated">
-						<span class="label label-danger" ng-show="loginForm.$submitted && loginForm.email.$error.required">E-mail inválido</span>
-						<form class="navbar-form navbar-right" name="loginForm" ng-submit="loginForm.$valid && loginCtrl.authenticate()" novalidate>
+					<div ng-hide="user.authenticated">
+						<form class="navbar-form navbar-right css-form" name="loginForm" id="loginForm" ng-submit="loginForm.$valid && authenticate(loginForm)" novalidate>
 							<div class="form-group">
-								<input id="email" name="email" ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
+								<input id="uEmail" name="uEmail" ng-model="loginCtrl.user.email" type="email" placeholder="E-mail" class="form-control" required>
 							</div>
 							<div class="form-group">
 								<input id="password" name="password" ng-model="loginCtrl.user.password" type="password" placeholder="Senha" class="form-control" required>
@@ -42,19 +41,19 @@
 							<button type="submit" class="btn btn-success">Entrar</button>
 						</form>
 					</div>
-					<div class="navbar-right" ng-show="loginCtrl.user.authenticated">
-							<ul class="nav navbar-nav">
-								<li>
-									<a 	class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="true" style="font-weight: bold">
-										{{loginCtrl.user.name}}
-									</a>
-									<ul class="dropdown-menu" aria-labelledby="dropdown-user">
-									    <li><a>Meu Perfil</a></li>
-									    <li><a ng-click="loginCtrl.logout()">Sair</a></li>
-									  </ul>
-								</li>
-							</ul>
+					<div class="navbar-right" ng-show="user.authenticated">
+						<ul class="nav navbar-nav">
+							<li>
+								<a 	class="dropdown-toggle" id="dropdown-user" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="true" style="font-weight: bold">
+									{{user.name}}
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown-user">
+								    <li><a>Meu Perfil</a></li>
+								    <li><a ng-click="logout()">Sair</a></li>
+								  </ul>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -62,6 +61,10 @@
 	</div>
 
 	<div class="container">
+		<div ng-controller="AlertDemoCtrl">
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+			<button class='btn btn-default' ng-click="addAlert('Teste')">Add Alert</button>
+		</div>
 		<div ng-view></div>
 	</div>
 
@@ -69,6 +72,7 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/ui-bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/index/main.js"></script>
 </body>
 </html>

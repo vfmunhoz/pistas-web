@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('main', ['ngRoute']);
+	var app = angular.module('main', ['ngRoute', 'ui.bootstrap']);
 
 	app.controller('HomeController', function($scope) {
 		$scope.message = 'Home!';
@@ -13,16 +13,21 @@
 		$scope.message = 'Main!';
 	});
 	
-	app.controller('LoginController', function() {
-		this.user = {authenticated: false};
+	app.controller('LoginController', function($scope) {
+		$scope.user = {authenticated: false};
 		
-		this.authenticate = function() {
-			this.user.authenticated = true;
-			this.user.name = 'Teste';
+		$scope.authenticate = function(loginForm) {
+			$scope.user.authenticated = true;
+			$scope.user.name = 'Teste';
+			
+			loginForm.$setPristine();
+			loginForm.$setUntouched();
 		};
 		
-		this.logout = function() {
-			this.user = {authenticated: false};
+		
+		$scope.logout = function() {
+			$scope.user = {authenticated: false};
+			$scope.loginCtrl.user = {authenticated: false}
 		};
 	});
 
@@ -31,7 +36,22 @@
 	        return viewLocation === $location.path();
 	    };
 	});
-	
+
+	app.controller('AlertDemoCtrl', function($scope) {
+		$scope.alerts = [
+		                 { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+		                 { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+		               ];
+		
+		$scope.addAlert = function() {
+			$scope.alerts.push({type: 'danger', msg: 'Another alert!'});
+		};
+		
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
+	});
+
 	app.config(function($routeProvider, $locationProvider) {
 		$routeProvider.when('/', {
 			templateUrl : 'pages/home.html',

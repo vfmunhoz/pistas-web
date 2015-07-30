@@ -13,7 +13,7 @@
 		$scope.message = 'Main!';
 	});
 	
-	app.controller('LoginController', function($scope, alertService) {
+	app.controller('LoginController', function($scope) {
 		$scope.user = {authenticated: false};
 		
 		$scope.authenticate = function(loginForm) {
@@ -22,9 +22,6 @@
 			
 			loginForm.$setPristine();
 			loginForm.$setUntouched();
-			
-			alertService.add('error', 'teste');
-			alertService.add('success', 'teste');
 		};
 		
 		

@@ -24,6 +24,14 @@
 	    };
 	});
 
+	app.controller('CadastroController', function($scope) {
+		$scope.format = 'dd/MM/yyyy';
+
+		$scope.dateOptions = {
+			    startingDay: 1
+			  };
+	});
+
 	app.config(function($routeProvider, $locationProvider) {
 		$routeProvider.when('/', {
 			templateUrl : 'pages/home.html',

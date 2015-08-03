@@ -24,8 +24,14 @@
 	    };
 	});
 
-	app.controller('CadastroController', function($scope) {
-		$scope.cadastrar = function(usuario) {
+	app.controller('CadastroController', function($scope, alertService) {
+		$scope.cadastrar = function(form, usuario) {
+			$scope.usuario = {};
+			
+			form.$setPristine();
+			form.$setUntouched();
+			
+			alertService.add('success', 'Usuário cadastrado com sucesso!');
 		}
 	});
 

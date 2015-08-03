@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('main', ['ngRoute', 'ui.bootstrap', 'main.services']);
+	var app = angular.module('main', ['ngRoute', 'ui.bootstrap', 'ui.mask', 'main.services']);
 
 	app.controller('LoginController', function($scope) {
 		$scope.user = {authenticated: false};
@@ -25,11 +25,8 @@
 	});
 
 	app.controller('CadastroController', function($scope) {
-		$scope.format = 'dd/MM/yyyy';
-
-		$scope.dateOptions = {
-			    startingDay: 1
-			  };
+		$scope.cadastrar = function(usuario) {
+		}
 	});
 
 	app.config(function($routeProvider, $locationProvider) {

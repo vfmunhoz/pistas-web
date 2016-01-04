@@ -13,6 +13,9 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/small-business.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/small-business.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="fonts/contato/css/font-awesome.min.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,13 +46,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#/home">Home</a>
                     </li>
                     <li>
                         <a href="#">Mapa</a>
                     </li>
                     <li>
-                        <a href="pages/contato.html">Contato</a>
+                        <a href="#/contato">Contato</a>
                     </li>
                     <li>
                         <a href="#login" data-toggle="modal" data-target="#loginModal">Login</a>
@@ -63,56 +66,7 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Heading Row -->
-        <div class="row">
-            <div class="col-md-8">
-                <img class="img-responsive img-rounded" src="images/index/mapa.jpg" alt="Mapa">
-            </div>
-            <!-- /.col-md-8 -->
-            <div class="col-md-4">
-                <h1>Encontre locais para seu Hobby</h1>
-                <p>Cansado de praticar seu hobby sempre no mesmo lugar? Quer encontrar novos lugares para ir se divertir? Então você está no lugar certo, encontre novos locais e veja a avaliação dos usuários para encontrar o melhor local para você.</p>
-                <a class="btn btn-primary btn-lg" href="#">Ver o mapa!</a>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Call to Action Well -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="well text-center">
-                    This is a well that is a great spot for a business tagline or phone number for easy access!
-                </div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-
-        <!-- Content Row -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Heading 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h2>Heading 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h2>Heading 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
+        <div ng-view></div>
 
         <!-- Footer -->
         <footer>
@@ -165,7 +119,9 @@
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
     <script type="text/javascript" src="js/index/main.js"></script>
+    <script type="text/javascript" src="js/index/controllers.js"></script>
 
 </body>
 

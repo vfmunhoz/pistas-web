@@ -1,22 +1,21 @@
 (function() {
-	var app = angular.module('main', []);
+	var app = angular.module('main', ['ngRoute', 'pistasControllers']);
 
-	app.controller('LoginController', ['$scope', function($scope) {
-
-		$scope.user= {};
-
-		$scope.autenticar = function(user) {
-			alert("Email: " + user.email);
-			alert("Senha: " + user.senha);
-
-			$scope.reset();
-		};
-
-		$scope.reset = function() {
-			$scope.user.email = '';
-			$scope.user.senha = '';
-		};
-
-		$scope.reset();
+	app.config(['$routeProvider', function($routeProvider) {
+		$routeProvider.when('/home',
+				{
+					templateUrl: 'pages/home.html',
+					controller: 'LoginController'
+				}
+		)
+		.when('/contato',
+				{
+					templateUrl: 'pages/contato.html',
+					controller: 'LoginController'
+				}
+		)
+		.otherwise({
+			redirectTo: '/home'
+		});
 	}]);
 })();

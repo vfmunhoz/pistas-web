@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('main', ['ngRoute', 'pistasControllers']);
+	var app = angular.module('main', ['ngRoute', 'pistasControllers', 'pistasDirectives']);
 
 	app.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/home',
@@ -11,7 +11,7 @@
 		.when('/contato',
 				{
 					templateUrl: 'pages/contato.html',
-					controller: 'LoginController'
+					controller: 'ContatoController'
 				}
 		)
 		.otherwise({

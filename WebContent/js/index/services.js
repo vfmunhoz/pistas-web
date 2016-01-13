@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-	var appServices = angular.module('main.services', []);
+	var appServices = angular.module('main.services', ['ui.bootstrap']);
 	
 	appServices.factory('alertService', function($rootScope) {
 		var alertService = {};
